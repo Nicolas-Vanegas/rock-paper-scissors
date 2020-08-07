@@ -16,16 +16,15 @@ if(machineSelectNumber == 1) {
 
 console.log(machineSelect); 
 
-
-  if(userSelect != machineSelect) {
-    if(userSelect == "rock" && machineSelect == "scissors" || userSelect == "scissors" && machineSelect == "paper" || userSelect == "paper" && machineSelect == "rock"){
-      mensaje = "You win!!!";
-    }else if(userSelect == "paper" && machineSelect == "scissors" || userSelect == "rock" && machineSelect == "paper" || userSelect == "scissors" && machineSelect == "rock"){
-      mensaje = "You Lose!!!";
-    }else {
-      mensaje = "unidentified value, play again"
-    }
+if(userSelect != machineSelect) {
+  if(userSelect == "rock" && machineSelect == "scissors" || userSelect == "scissors" && machineSelect == "paper" || userSelect == "paper" && machineSelect == "rock"){
+    mensaje = "You win!!!";
+  }else if(userSelect == "paper" && machineSelect == "scissors" || userSelect == "rock" && machineSelect == "paper" || userSelect == "scissors" && machineSelect == "rock"){
+    mensaje = "You Lose!!!";
   }else {
-    mensaje = "Tie";
+    mensaje = "unidentified value, play again"
   }
-  console.log(mensaje);
+}else {
+  mensaje = "Tie";
+}
+console.log(mensaje);
