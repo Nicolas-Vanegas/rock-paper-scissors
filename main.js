@@ -37,19 +37,26 @@ if(machineSelectNumber == 1) {
 console.log(machineSelect); 
 console.log(userSelect); 
 
-//Juego
 
+//Juego
 function play(userSelect, machineSelect){
   if(userSelect != machineSelect) {
     if(userSelect == "rock" && machineSelect == "scissors" || userSelect == "scissors" && machineSelect == "paper" || userSelect == "paper" && machineSelect == "rock"){
-    mensaje.innerHTML = `<h1>You win!!!</h1>`;
+    mensaje.innerHTML = `<h1>You win!!!</h1><br><p>the machine chose ${machineSelect}`;
     modal.style.display = 'block';
     }else if(userSelect == "paper" && machineSelect == "scissors" || userSelect == "rock" && machineSelect == "paper" || userSelect == "scissors" && machineSelect == "rock"){
-    mensaje.innerHTML = `<h1>You Lose!!!</h1>`;
+    mensaje.innerHTML = `<h1>You Lose!!!</h1><br><p>the machine chose ${machineSelect}`;
     modal.style.display = 'block';
     }
   }else {
-    mensaje.innerHTML = `<h1>tie!!!</h1>`;
+    mensaje.innerHTML = `<h1>tie!!!</h1><br><p>the machine chose ${machineSelect}`;
     modal.style.display = 'block';
   }
 }
+function clearModal(e){
+  if(e.target == modal) {
+    modal.style.display = "none"
+  }
+}
+window.addEventListener('click', clearModal);
+play();
