@@ -10,15 +10,36 @@ var machineScore = 0;
 var rock = document.getElementById("rock");
 var paper = document.getElementById("paper");
 var scissors = document.getElementById("scissors");
-const userScore_span = document.getElementById("user-score");
-const machineScore_span = document.getElementById("machine-score");
+var userScore_span = document.getElementById("user-score");
+var machineScore_span = document.getElementById("machine-score");
 var restart = document.getElementById("restart");
 var mensaje = document.getElementById("mensaje");
 var modal = document.querySelector(".modal");
 
 //Cuando le de click a algun boton, le asigna un valor a userSelect
 
-function selectRock() {
+/* var clicked = false
+document.getElementById('rock').addEventListener("click", function() {
+   clicked = true;
+}​);
+if(clicked == true){
+  userSelect = "rock";
+}
+var clicked = false
+document.getElementById('paper').addEventListener("click", function() {
+   clicked = true;
+}​);
+if(clicked == true){
+  userSelect = "paper";
+}
+var clicked = false
+document.getElementById('scissors').addEventListener("click", function() {
+   clicked = true;
+}​);
+if(clicked == true){
+  userSelect = "scissors";
+} */
+/* function selectRock() {
   userSelect = "rock";
   play(userSelect,machineSelect);
 }
@@ -32,9 +53,9 @@ function selectScissors() {
 }
 rock.addEventListener("click",selectRock);
 paper.addEventListener("click",selectPaper);
-scissors.addEventListener("click",selectScissors);
+scissors.addEventListener("click",selectScissors); */
 
-/* rock.addEventListener('click',function() {
+rock.addEventListener('click',function() {
   userSelect = "rock";
   play(userSelect,machineSelect);
 })
@@ -45,7 +66,7 @@ paper.addEventListener('click',function() {
 scissors.addEventListener('click',function() {
   userSelect = "scissors";
   play(userSelect,machineSelect);
-}) */
+})
 
 //darle un arma aleatoria a la maquina
 var machineSelectNumber = Math.round(Math.random()* 3);
