@@ -1,7 +1,6 @@
 //Problema: Juego de piedra papel o tijera, darle una de las 3 elecciones al usuario y a la maquina y decirles quien ganó.
 let userScore = 0;
-let machineScore = 0;
-var userSelect;/* prompt("Enter your choice between rock, papers and scissors"); //para que ingrese la eleccion que desea. */
+let machineScore = 0;/* prompt("Enter your choice between rock, papers and scissors"); //para que ingrese la eleccion que desea. */
 /* const weapon1 = document.getElementById("rock").addEventListener("click");
 const weapon2 = document.getElementById("paper").addEventListener("click");
 const weapon3 = document.getElementById("scissors").addEventListener("click"); */
@@ -16,24 +15,24 @@ const mensaje = document.getElementById("mensaje");
 const modal = document.querySelector(".modal");
 
 //Cuando le de click a algun boton, le asigna un valor a userSelect
-function all(){
+const all = () => {
   rock.addEventListener('click',function() {
-    userSelect = "rock";
+    let userSelect = "rock";
     play(userSelect,machineSelect);//Con esto me sale como debe pero se va muy rápido
   })
   paper.addEventListener('click',function() {
-    userSelect = "paper";
+    let userSelect = "paper";
     play(userSelect,machineSelect);
   })
 
   scissors.addEventListener('click',function() {
-    userSelect = "scissors";
+    let userSelect = "scissors";
     play(userSelect,machineSelect);
   })
 }
 
 //darle un arma aleatoria a la maquina
-var machineSelectNumber = Math.round(Math.random()* 3);
+const machineSelectNumber = Math.round(Math.random()* 3);
 if(machineSelectNumber == 1) {
   var machineSelect = "rock";
 }else if (machineSelectNumber == 2) {
@@ -45,7 +44,7 @@ console.log(machineSelect);
 
 
 //Juego
-function play(userSelect,machineSelect){
+const play = (userSelect,machineSelect) => {
   if(userSelect != machineSelect) {
     if(userSelect == "rock" && machineSelect == "scissors" || userSelect == "scissors" && machineSelect == "paper" || userSelect == "paper" && machineSelect == "rock"){
       userScore++;
