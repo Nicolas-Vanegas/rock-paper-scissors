@@ -4,7 +4,6 @@ let machineScore = 0;/* prompt("Enter your choice between rock, papers and sciss
 /* const weapon1 = document.getElementById("rock").addEventListener("click");
 const weapon2 = document.getElementById("paper").addEventListener("click");
 const weapon3 = document.getElementById("scissors").addEventListener("click"); */
-var machineSelect;
 const userScore_span = document.getElementById("user-score");
 const machineScore_span = document.getElementById("machine-score");
 const rock = document.getElementById("rock");
@@ -17,16 +16,16 @@ const modal = document.querySelector(".modal");
 //Cuando le de click a algun boton, le asigna un valor a userSelect
 const all = () => {
   rock.addEventListener('click',function() {
-    let userSelect = "rock";
+    var userSelect = "rock";
     play(userSelect,machineSelect);//Con esto me sale como debe pero se va muy rápido
   })
   paper.addEventListener('click',function() {
-    let userSelect = "paper";
+    var userSelect = "paper";
     play(userSelect,machineSelect);
   })
 
   scissors.addEventListener('click',function() {
-    let userSelect = "scissors";
+    var userSelect = "scissors";
     play(userSelect,machineSelect);
   })
 }
@@ -34,11 +33,11 @@ const all = () => {
 //darle un arma aleatoria a la maquina
 const machineSelectNumber = Math.round(Math.random()* 3);
 if(machineSelectNumber == 1) {
-  var machineSelect = "rock";
+   machineSelect = "rock";
 }else if (machineSelectNumber == 2) {
-  var machineSelect = "paper";
+   machineSelect = "paper";
 }else{
-  var machineSelect = "scissors";
+   machineSelect = "scissors";
 }
 console.log(machineSelect); 
 
