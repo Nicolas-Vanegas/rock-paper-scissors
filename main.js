@@ -4,80 +4,93 @@ let machineScore = 0;/* prompt("Enter your choice between rock, papers and sciss
 /* const weapon1 = document.getElementById("rock").addEventListener("click");
 const weapon2 = document.getElementById("paper").addEventListener("click");
 const weapon3 = document.getElementById("scissors").addEventListener("click"); */
-const userScore_span = document.getElementById("user-score");
-const machineScore_span = document.getElementById("machine-score");
-const rock = document.getElementById("rock");
-const paper = document.getElementById("paper");
-const scissors = document.getElementById("scissors");
-const restart = document.getElementById("restart");
-const mensaje = document.getElementById("mensaje");
-const modal = document.querySelector(".modal");
+var userScore_span = document.getElementById("user-score");
+var machineScore_span = document.getElementById("machine-score");
+var rock = document.getElementById("rock");
+var paper = document.getElementById("paper");
+var scissors = document.getElementById("scissors");
+var restart = document.getElementById("restart");
+var mensaje = document.getElementById("mensaje");
+var modal = document.getElementById("modal");
 
 //Cuando le de click a algun boton, le asigna un valor a userSelect
 const all = () => {
   rock.addEventListener('click',function() {
+    
     var userSelect = "rock";
-    play(userSelect,machineSelect);//Con esto me sale como debe pero se va muy rápido
+    play(userSelect);//Con esto me sale como debe pero se va muy rápido
   })
   paper.addEventListener('click',function() {
     var userSelect = "paper";
-    play(userSelect,machineSelect);
+    play(userSelect);
   })
 
   scissors.addEventListener('click',function() {
     var userSelect = "scissors";
-    play(userSelect,machineSelect);
+    play(userSelect);
   })
 }
 
 //darle un arma aleatoria a la maquina
-const machineSelectNumber = Math.round(Math.random()* 3);
-if(machineSelectNumber == 1) {
-   machineSelect = "rock";
-}else if (machineSelectNumber == 2) {
-   machineSelect = "paper";
-}else{
-   machineSelect = "scissors";
-}
-console.log(machineSelect); 
+const getRambomChoice = () => {
+  let response =  "rock";
 
+  const choiceId = Math.round(Math.random()* 3);
+  if (choiceId == 2) {
+    response = "paper";
+  }else if(choiceId === 3) {
+    response = "scissors";
+  }
+  
+  return response;
+}
 
 //Juego
-const play = (userSelect,machineSelect) => {
+const play = (userSelect) => {
+ // debugger;
+
+  let machineSelect = getRambomChoice();
+
   if(userSelect != machineSelect) {
     if(userSelect == "rock" && machineSelect == "scissors" || userSelect == "scissors" && machineSelect == "paper" || userSelect == "paper" && machineSelect == "rock"){
       userScore++;
-      userScore_span.innerHTML = userScore;
-      machineScore_span.innerHTML = machineScore;
+      // userScore_span.innerHTML = userScore;
+      // machineScore_span.innerHTML = machineScore;
       mensaje.innerHTML = `<h1>You win!!!</h1><br><p>the machine chose ${machineSelect}`;
       modal.style.display = 'block';
     }else if(userSelect == "paper" && machineSelect == "scissors" || userSelect == "rock" && machineSelect == "paper" || userSelect == "scissors" && machineSelect == "rock"){
       machineScore++;
-      userScore_span.innerHTML = userScore;
-      machineScore_span.innerHTML = machineScore;
+      // userScore_span.innerHTML = userScore;
+      // machineScore_span.innerHTML = machineScore;
       mensaje.innerHTML = `<h1>You Lose!!!</h1><br><p>the machine chose ${machineSelect}`;
       modal.style.display = 'block';
     }
   }else {
-    userScore_span.innerHTML = userScore;
-    machineScore_span.innerHTML = machineScore;
+    // userScore_span.innerHTML = userScore;
+    // machineScore_span.innerHTML = machineScore;
     mensaje.innerHTML = `<h1>tie!!!</h1><br><p>the machine chose ${machineSelect}`;
     modal.style.display = 'block';
   }
+
+  alert(`Sin miedo al exito papi!!!! -- ${userScore}` )
 }
 //modal
 function clearModal(e){
+  console.log("clearModal", e)
+
   if(e.target == modal) {
     modal.style.display = "none"
   }
 }
+
 function restartGame(){
   userScore = 0;
   cpuScore = 0;
-  userScore_span.innerHTML = userScore;
-  machineScore_span.innerHTML = cpuScore;
+  // userScore_span.innerHTML = userScore;
+  // machineScore_span.innerHTML = cpuScore;
 }
+
 restart.addEventListener('click',restartGame);
-window.addEventListener('click', clearModal);
+//window.addEventListener('click', clearModal);
 
 all();
