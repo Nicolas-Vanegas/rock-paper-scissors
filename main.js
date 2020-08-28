@@ -1,76 +1,121 @@
-//Problema: Juego de piedra papel o tijera, darle una de las 3 elecciones al usuario y a la maquina y decirles quien ganó.
-let userScore = 0;
-let machineScore = 0;/* prompt("Enter your choice between rock, papers and scissors"); //para que ingrese la eleccion que desea. */
-/* const weapon1 = document.getElementById("rock").addEventListener("click");
-const weapon2 = document.getElementById("paper").addEventListener("click");
-const weapon3 = document.getElementById("scissors").addEventListener("click"); */
-const userScore_span = document.getElementById("user-score");
-const machineScore_span = document.getElementById("machine-score");
-const rock = document.getElementById("rock");
-const paper = document.getElementById("paper");
-const scissors = document.getElementById("scissors");
-const restart = document.getElementById("restart");
-const mensaje = document.getElementById("mensaje");
-const modal = document.querySelector(".modal");
+window.onload = () => {
+  document.querySelector(".rock").addEventListener("click", rock);
+  document.querySelector(".paper").addEventListener("click", paper);
+  document.querySelector(".scissors").addEventListener("click", scissors);
+  document.body.addEventListener("click", e => clearModal(e));
+  document.body.addEventListener("keyup", e => listenForEsc(e));
+};
 
-//Cuando le de click a algun boton, le asigna un valor a userSelect
-const all = () => {
-  rock.addEventListener('click',function() {
-    var userSelect = "rock";
-    play(userSelect,machineSelect);//Con esto me sale como debe pero se va muy rápido
-  })
-  paper.addEventListener('click',function() {
-    var userSelect = "paper";
-    play(userSelect,machineSelect);
-  })
+const rock = () => {
+  const machineSelectNumber = Math.round(Math.random() * 3);
+  if (machineSelectNumber == 1) {
+    machineSelect = "rock";
+  } else if (machineSelectNumber == 2) {
+    machineSelect = "paper";
+  } else {
+    machineSelect = "scissors";
+  }
+  console.log(machineSelect);
 
-  scissors.addEventListener('click',function() {
-    var userSelect = "scissors";
-    play(userSelect,machineSelect);
-  })
-}
+  switch (machineSelect) {
+    case "rock":
+      document.getElementById("modal-header").innerHTML = "! Tie!!!";
+      this.addEventListener("click", e => openModal(e));
+      break;
+    case "scissors":
+      document.getElementById("modal-header").innerHTML = "! You Win!!!!";
+      this.addEventListener("click", e => openModal(e));
+      break;
+    case "paper":
+      document.getElementById("modal-header").innerHTML = "! You lose!!!";
+      this.addEventListener("click", e => openModal(e));
+      return console.log(`you lose!!`);
+    default:
+      break;
+  }
+};
 
-//darle un arma aleatoria a la maquina
-const machineSelectNumber = Math.round(Math.random()* 3);
-if(machineSelectNumber == 1) {
-   machineSelect = "rock";
-}else if (machineSelectNumber == 2) {
-   machineSelect = "paper";
-}else{
-   machineSelect = "scissors";
-}
-console.log(machineSelect); 
+const paper = () => {
+  const machineSelectNumber = Math.round(Math.random() * 3);
+  if (machineSelectNumber == 1) {
+    machineSelect = "rock";
+  } else if (machineSelectNumber == 2) {
+    machineSelect = "paper";
+  } else {
+    machineSelect = "scissors";
+  }
+  console.log(machineSelect);
 
+  switch (machineSelect) {
+    case "rock":
+      document.getElementById("modal-header").innerHTML = "! Tie!!!";
+      this.addEventListener("click", e => openModal(e));
+      break;
+    case "scissors":
+      document.getElementById("modal-header").innerHTML = "! You Win!!!!";
+      this.addEventListener("click", e => openModal(e));
+      break;
+    case "paper":
+      document.getElementById("modal-header").innerHTML = "! You lose!!!";
+      this.addEventListener("click", e => openModal(e));
+      return console.log(`you lose!!`);
+    default:
+      break;
+  }
+};
+
+const scissors = () => {
+  const machineSelectNumber = Math.round(Math.random() * 3);
+  if (machineSelectNumber == 1) {
+    machineSelect = "rock";
+  } else if (machineSelectNumber == 2) {
+    machineSelect = "paper";
+  } else {
+    machineSelect = "scissors";
+  }
+  console.log(machineSelect);
+
+  switch (machineSelect) {
+    case "rock":
+      document.getElementById("modal-header").innerHTML = "! Tie!!!";
+      this.addEventListener("click", e => openModal(e));
+      break;
+    case "scissors":
+      document.getElementById("modal-header").innerHTML = "! You Win!!!!";
+      this.addEventListener("click", e => openModal(e));
+      break;
+    case "paper":
+      document.getElementById("modal-header").innerHTML = "! You lose!!!";
+      this.addEventListener("click", e => openModal(e));
+      return console.log(`you lose!!`);
+    default:
+      break;
+  }
+};
 
 //Juego
-const play = (userSelect,machineSelect) => {
-  if(userSelect != machineSelect) {
-    if(userSelect == "rock" && machineSelect == "scissors" || userSelect == "scissors" && machineSelect == "paper" || userSelect == "paper" && machineSelect == "rock"){
-      userScore++;
-      userScore_span.innerHTML = userScore;
-      machineScore_span.innerHTML = machineScore;
-      mensaje.innerHTML = `<h1>You win!!!</h1><br><p>the machine chose ${machineSelect}`;
-      modal.style.display = 'block';
-    }else if(userSelect == "paper" && machineSelect == "scissors" || userSelect == "rock" && machineSelect == "paper" || userSelect == "scissors" && machineSelect == "rock"){
-      machineScore++;
-      userScore_span.innerHTML = userScore;
-      machineScore_span.innerHTML = machineScore;
-      mensaje.innerHTML = `<h1>You Lose!!!</h1><br><p>the machine chose ${machineSelect}`;
-      modal.style.display = 'block';
-    }
-  }else {
-    userScore_span.innerHTML = userScore;
-    machineScore_span.innerHTML = machineScore;
-    mensaje.innerHTML = `<h1>tie!!!</h1><br><p>the machine chose ${machineSelect}`;
-    modal.style.display = 'block';
-  }
-}
+
 //modal
-function clearModal(e){
-  if(e.target == modal) {
-    modal.style.display = "none"
+/**Escucha por la clave esc para cerrar el modal */
+function listenForEsc(e) {
+  if (e.keyCode === 27) {
+    clearModal(e);
   }
 }
+function openModal(e) {
+  document.querySelector(".modal-container").style.display = "flex";
+  document.getElementById("modal-header").focus();
+}
+
+function clearModal(e) {
+  // si el click occurio dentro del las imagenes del carousel o dentro del modal, no se cierra el modal
+  if (e.target.className === "modal") {
+    return;
+  } else {
+    document.querySelector(".modal-container").style.display = "none";
+  }
+}
+/*
 function restartGame(){
   userScore = 0;
   cpuScore = 0;
@@ -78,6 +123,4 @@ function restartGame(){
   machineScore_span.innerHTML = cpuScore;
 }
 restart.addEventListener('click',restartGame);
-window.addEventListener('click', clearModal);
-
-all();
+window.addEventListener('click', clearModal); */

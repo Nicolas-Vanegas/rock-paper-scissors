@@ -1,46 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rock paper scissors</title>
-  <script src="https://kit.fontawesome.com/2676ef475c.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/main.css">
-</head>
-<body>
-  <main>
-    <div class="container">
-      <h1>ROCK PAPER SCISSORS</h1>
-      <div class="points">
-        <div class="content-points">
-          <div>
-            <strong >USER</strong>
-            <span id="user-score">0</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock paper scissors</title>
+    <script src="https://kit.fontawesome.com/2676ef475c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <h1>ROCK PAPER SCISSORS</h1>
+        <div class="points">
+          <div class="content-points">
+            <div>
+              <strong>USER</strong>
+              <span id="user-score">0</span>
+            </div>
+            <p>VS</p>
+            <div>
+              <strong>Machine</strong>
+              <span id="machine-score">0</span>
+            </div>
           </div>
-          <p> VS </p>
-          <div>
-            <strong>Machine</strong>
-            <span id="machine-score">0</span>
+          <div class="btn-container">
+            <button id="restart" class="restart-btn">Restart Game</button>
           </div>
         </div>
-        <div class="btn-container">  
-          <button id="restart" class="restart-btn">Restart Game</button>
+        <div class="console">
+          <h2>Select your weapon</h2>
+          <div class="container-icons">
+            <button href="" class="rock" id="rock" data-seleccion="rock"><i class="fas fa-hand-rock"></i></button>
+            <button href="" class="paper" id="paper" data-seleccion="paper"><i class="fas fa-hand-paper"></i></button>
+            <button href="" class="scissors" id="scissors" data-seleccion="scissors">
+              <i class="fas fa-hand-scissors"></i>
+            </button>
+          </div>
         </div>
       </div>
-      <div class="console">
-        <h2>Select your weapon</h2>
-        <div class="container-icons">
-          <a href="" class="rock" id="rock"><i class="fas fa-hand-rock"></i></a>
-          <a href="" class="paper" id="paper"><i class="fas fa-hand-paper"></i></a>
-          <a href="" class="scissors" id="scissors"><i class="fas fa-hand-scissors"></i></a>
+      <!-- Modal -->
+      <div class="modal-container">
+        <div class="modal">
+          <h2 id="modal-header" class="modal-content"></h2>
+          <button class="modal-button button">Cerrar</button>
         </div>
       </div>
-    </div>
-    <!-- Modal -->
-  <div class="modal">
-    <div id="mensaje" class="modal-content"></div>
-  </div>
-  </main> 
-</body>
-<script src="main.js"></script>
+    </main>
+  </body>
+  <script src="main.js"></script>
 </html>
